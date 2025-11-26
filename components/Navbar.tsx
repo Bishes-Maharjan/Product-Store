@@ -1,5 +1,6 @@
 "use client";
 
+import { ShoppingCartIcon } from "lucide-react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -38,6 +39,10 @@ export default function Navbar() {
 
           {/* Right side - wraps on small screens */}
           <div className="flex flex-wrap items-center gap-2 sm:gap-3 max-w-full">
+            <Link href="/cart" className="flex items-center gap-2">
+              <ShoppingCartIcon className="w-5 h-5" />
+              <span>Cart</span>
+            </Link>
             <CategoryDropdown />
             <SortByDropdown />
             <input

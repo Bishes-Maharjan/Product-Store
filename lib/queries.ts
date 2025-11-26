@@ -16,14 +16,18 @@ export async function fetchProducts(
   let url;
 
   if (category) {
+    // first we will look at category
     url = `${BASE_URL}/category/${category}?limit=${limit}&skip=${skip}`;
   } else if (search) {
+    // then if not category, search
     url = `${BASE_URL}/search?q=${search}&limit=${limit}&skip=${skip}`;
   } else {
+    // if neither, simply default limit and skip
     url = `${BASE_URL}?limit=${limit}&skip=${skip}`;
   }
 
   if (sortBy) {
+    // seperate because i wanted sorting for both cases where category and search are included
     url += `&sortBy=${sortBy}&order=${order}`;
   }
 
@@ -34,6 +38,7 @@ export async function fetchProducts(
 
   let filteredProducts = data.products;
   if (category && search) {
+    // finding searched products id
     const searchedProducts = await fetch(
       `${BASE_URL}/search?q=${search}&limit=${limit}&skip=${skip}`
     ).then((res) => res.json());
@@ -42,6 +47,7 @@ export async function fetchProducts(
       searchedProducts.products.map((p: Product) => p.id)
     );
 
+    // Categorial Products where searched products will only be returned
     filteredProducts = data.products.filter((product: Product) =>
       searchedProductIds.has(product.id)
     );
@@ -51,7 +57,7 @@ export async function fetchProducts(
     ...data,
     products: filteredProducts,
     total: category && search ? filteredProducts.length : data.total,
-    hasMore: skip + filteredProducts.length < data.total,
+    hasMore: skip + filteredProducts.length < data.total, // needed for infiniteQuery
   };
 }
 
@@ -59,7 +65,7 @@ export const fetchProductById = async (id: number) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`);
     const data = await res.json();
-    console.log(data);
+
     return data;
   } catch (error) {
     toast.error(error instanceof Error ? error.message : "Unknown error");

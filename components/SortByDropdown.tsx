@@ -43,7 +43,7 @@ export default function SortByDropdown() {
     }
 
     router.push(`?${params.toString()}`);
-  }, [sortBy, order, router]);
+  }, [sortBy, order]);
 
   return (
     <div className="flex items-center gap-2">

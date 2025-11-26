@@ -16,7 +16,6 @@ import { useQuery } from "@tanstack/react-query";
 import { ChevronDown } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
-import { Spinner } from "./ui/spinner";
 
 export function CategoryDropdown() {
   const [category, setCategory] = React.useState("none");
@@ -40,11 +39,7 @@ export function CategoryDropdown() {
     router.push(`/?${params.toString()}`);
 
     return;
-  }, [category, router]);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
+  }, [category]);
 
   return (
     <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
