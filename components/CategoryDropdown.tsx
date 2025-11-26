@@ -22,7 +22,7 @@ export function CategoryDropdown() {
   const [isOpen, setIsOpen] = React.useState(false);
   const router = useRouter();
 
-  const { data, isLoading } = useQuery({
+  const { data } = useQuery({
     queryKey: ["categories"],
     queryFn: fetchCategoryLists,
   });
@@ -39,6 +39,7 @@ export function CategoryDropdown() {
     router.push(`/?${params.toString()}`);
 
     return;
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
   return (

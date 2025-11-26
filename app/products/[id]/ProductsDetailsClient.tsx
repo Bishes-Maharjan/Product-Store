@@ -285,7 +285,7 @@ export default function ProductDetails({ id }: { id: number }) {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <Package className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
+                <Package className="w-6 h-6 text-primary shrink-0 mt-1" />
                 <div>
                   <p className="font-semibold text-foreground">Warranty</p>
                   <p className="text-muted-foreground text-sm">
