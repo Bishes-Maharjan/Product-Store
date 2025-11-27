@@ -1,4 +1,5 @@
-# Product Listing App — Assignment Submission
+# Product Listing App — Assignment Submission 
+# Server Live at <a href="https://product-store-hazel.vercel.app/">Vercel </a>
 
 This project implements the required features listed in the assignment using **Next.js**, **Zustand**, **TanStack Query**, **shadcn/ui**, and **TailwindCSS**.  
 The application fetches products from a <a href="https://dummyjson.com/products/">dummy API</a>, allows filtering, infinite scrolling, and includes optional enhancements.
