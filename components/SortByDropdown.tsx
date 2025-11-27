@@ -10,7 +10,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ArrowDownAZ, ArrowUpZA, ChevronDown } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 
 export default function SortByDropdown() {
@@ -29,9 +29,12 @@ export default function SortByDropdown() {
   const [sortBy, setSortBy] = React.useState<SortBy>("None");
   const [isOpen, setIsOpen] = React.useState(false);
   const [order, setOrder] = React.useState<"asc" | "desc">("asc");
+  const pathname = usePathname();
   const router = useRouter();
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const params = new URLSearchParams(window.location.search);
 
     if (!sortBy || sortBy === "None") {
@@ -43,6 +46,7 @@ export default function SortByDropdown() {
     }
 
     router.push(`?${params.toString()}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sortBy, order]);
 
   return (

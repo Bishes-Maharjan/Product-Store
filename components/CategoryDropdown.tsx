@@ -14,12 +14,13 @@ import {
 import { fetchCategoryLists } from "@/lib/queries";
 import { useQuery } from "@tanstack/react-query";
 import { ChevronDown } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useEffect } from "react";
 
 export function CategoryDropdown() {
   const [category, setCategory] = React.useState("none");
   const [isOpen, setIsOpen] = React.useState(false);
+  const pathname = usePathname();
   const router = useRouter();
 
   const { data } = useQuery({
@@ -28,6 +29,8 @@ export function CategoryDropdown() {
   });
 
   useEffect(() => {
+    if (pathname !== "/") return;
+
     const params = new URLSearchParams(window.location.search);
 
     if (category === "none") {
@@ -39,7 +42,7 @@ export function CategoryDropdown() {
     router.push(`/?${params.toString()}`);
 
     return;
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category]);
 
   return (

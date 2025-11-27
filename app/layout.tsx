@@ -1,6 +1,8 @@
 import Navbar from "@/components/Navbar";
+import { Spinner } from "@/components/ui/spinner";
 import type { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
+import { Suspense } from "react";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import Providers from "./provider";
@@ -18,18 +20,20 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
-        <Toaster />
-        <Providers>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Navbar />
-            {children}
-          </ThemeProvider>
-        </Providers>
+        <Suspense fallback={<Spinner text="Loading ...." />}>
+          <Toaster />
+          <Providers>
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <Navbar />
+              {children}
+            </ThemeProvider>
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );

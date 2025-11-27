@@ -66,6 +66,14 @@ export const fetchProductById = async (id: number) => {
     const res = await fetch(`${BASE_URL}/${id}`);
     const data = await res.json();
 
+    if (res.status === 404) {
+      throw new Error("NOT_FOUND");
+    }
+
+    if (!res.ok) {
+      throw new Error("Failed to fetch product");
+    }
+
     return data;
   } catch (error) {
     toast.error(error instanceof Error ? error.message : "Unknown error");

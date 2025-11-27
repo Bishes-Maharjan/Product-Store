@@ -13,7 +13,8 @@ import {
   Trash2,
   Truck,
 } from "lucide-react";
-import { useState } from "react";
+import { notFound } from "next/navigation";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
 type Review = {
@@ -28,9 +29,14 @@ export default function ProductDetails({ id }: { id: number }) {
   const [quantity, setQuantity] = useState(1);
   const [isEditing, setIsEditing] = useState(false);
 
-  const { data: product, isLoading } = useQuery({
+  const {
+    data: product,
+    isLoading,
+    error,
+  } = useQuery({
     queryKey: ["products", id],
     queryFn: () => fetchProductById(id),
+    retry: false,
   });
 
   const cartItems = useCartStore((state) => state.items);
@@ -41,6 +47,12 @@ export default function ProductDetails({ id }: { id: number }) {
   console.log("incart", inCart);
 
   const cartItem = cartItems.find((cart) => cart.id == id);
+
+  useEffect(() => {
+    if (error?.message === "NOT_FOUND") {
+      return notFound();
+    }
+  }, [error]);
 
   if (isLoading) {
     return <Spinner />;
