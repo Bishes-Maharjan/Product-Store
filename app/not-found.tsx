@@ -7,7 +7,7 @@ export default function NotFound() {
       <div className="max-w-4xl w-full flex flex-col md:flex-row items-center gap-10">
         {/* left: icon */}
         <div className="flex-1 flex items-center justify-center">
-          <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl border border-border bg-gradient-to-br from-indigo-500/10 via-pink-500/10 to-amber-400/10 flex items-center justify-center">
+          <div className="relative w-72 h-72 md:w-96 md:h-96 rounded-3xl overflow-hidden shadow-2xl border border-border bg-linear-to-br from-indigo-500/10 via-pink-500/10 to-amber-400/10 flex items-center justify-center">
             <SearchX
               className="w-32 h-32 text-muted-foreground/40"
               strokeWidth={1.5}
