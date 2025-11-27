@@ -71,6 +71,8 @@ create a .env file in the project root directory
 NEXT_PUBLIC_BASE_URL = "https://dummyjson.com/products"
 ```
 
+The run the instruction below in the terminal within the folder directory
+
 ```bash
 npm install
 npm run dev
