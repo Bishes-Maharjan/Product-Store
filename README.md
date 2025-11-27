@@ -58,7 +58,7 @@ The application fetches products from a <a href="https://dummyjson.com/products/
 
 ### **Other Tools**
 
-- <a href="https://dummyjson.com/products/"> DummyJSON FakeStore API </a>
+- <a href="https://dummyjson.com/"> DummyJSON FakeStore API </a>
 - Next Themes for dark/light toggle
 
 ## Running the Project
