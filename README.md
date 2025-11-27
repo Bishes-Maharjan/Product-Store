@@ -1,37 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Product Listing App — Assignment Submission
 
-## Getting Started
+This project implements the required features listed in the assignment using **Next.js**, **Zustand**, **TanStack Query**, **shadcn/ui**, and **TailwindCSS**.  
+The application fetches products from a <a href="https://dummyjson.com/products/">dummy API</a>, allows filtering, infinite scrolling, and includes optional enhancements.
 
-First, run the development server:
+## Implemented Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### **Core Requirements**
+
+- **Homepage with Product List**  
+  Products are fetched from a dummy API using **TanStack Query** for caching & request management.
+
+- **Search Bar**  
+  Users can filter products by name in real time.
+
+- **Category Filter Dropdown**  
+  A dropdown allows filtering products by category.
+
+- **Infinite Scroll**  
+  Additional products are automatically loaded when the user scrolls to the bottom of the page.
+
+- **Responsive Design**  
+  Fully responsive layout built with **TailwindCSS** and **shadcn/ui** components.
+
+## Bonus Features (Implemented)
+
+- **Dark/Light Theme Toggle**  
+  Theme switching implemented using `next-themes`.
+
+- **Sort Options**  
+  Users can sort products by **price** or **rating**.
+
+- **Add to Cart Functionality**  
+  Cart state handled with **Zustand**, with item count updates and persistence.
+
+- **Improved Loading States**  
+  Skeleton loaders and subtle animations added for a smoother UX.
+
+## Tech Stack
+
+### **Frontend Framework**
+
+- **Next.js 14** (App Router)
+
+### **State Management**
+
+- **Zustand** — lightweight global store for cart and UI states.
+
+### **Data Fetching**
+
+- **TanStack Query** — for caching, refetching, and managing API states.
+
+### **UI & Styling**
+
+- **TailwindCSS**
+- **shadcn/ui** component library
+- **Lucide Icons**
+
+### **Other Tools**
+
+- <a href="https://dummyjson.com/products/"> DummyJSON / FakeStore API </a>
+- Next Themes for dark/light toggle
+
+## Running the Project
+
+### Setup .env
+
+create a .env file in the project root directory
+
+```env
+NEXT_PUBLIC_BASE_URL = "https://dummyjson.com/products"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```bash
+npm install
+npm run dev
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The project will be available at:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+http://localhost:3000
+```
 
-## Learn More
+## Folder Structure (Simplified)
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# Product-Store
+```
+/app
+  /products
+  /components
+  /hooks
+  /store (zustand)
+  /lib (helpers)
+```
